@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Google Keep"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_bulb"
+                        android:drawablePadding="16dp"
+                        android:drawableTint="@color/light_blue"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Notes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unselected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_bell"
+                        android:drawablePadding="16dp"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Reminders" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unselected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_add"
+                        android:drawablePadding="16dp"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Create new label" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unselected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_archive"
+                        android:drawablePadding="16dp"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Archive" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unselected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_trash"
+                        android:drawablePadding="16dp"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Deleted" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unselected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_settings"
+                        android:drawablePadding="16dp"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Settings" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unselected_side_menu_item"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableLeft="@drawable/ic_help"
+                        android:drawablePadding="16dp"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center|start"
+                        android:text="Help &amp; feedback" />
+                </LinearLayout>
+
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.navigation.NavigationView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_bar"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/ll_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="4dp">
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/side"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_icon_button"
+                        android:backgroundTint="@color/light_gray"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:src="@drawable/ic_menu" />
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/light_gray"
+                        app:iconifiedByDefault="false"
+                        app:queryHint="Search your notes"
+                        app:searchIcon="@null" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/view_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_icon_button"
+                        android:backgroundTint="@color/light_gray"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:src="@drawable/ic_single_column" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/profile"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="16dp"
+                        android:adjustViewBounds="false"
+                        android:background="@drawable/rounded_img"
+                        android:cropToPadding="false"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:padding="0dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/default_profile" />
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/bottomAppBarContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="?attr/actionBarSize" />
+
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:id="@+id/bottomAppBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="@color/light_gray"
+                    app:fabAlignmentMode="end"
+                    app:fabCradleMargin="6dp"
+                    app:fabCradleRoundedCornerRadius="5dp"
+                    app:fabCradleVerticalOffset="8dp"
+                    app:menu="@menu/bottom_menu" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:backgroundTint="@color/light_gray"
+                    android:src="@drawable/ic_add_google"
+                    app:layout_anchor="@id/bottomAppBar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
