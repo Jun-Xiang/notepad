@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notepadassignment.databinding.NotesBinding
 
 class NotesAdapter(
-    private var data: List<NoteModel>,
-    private val handleClick: (note: NoteModel, notifyItemChanged: () -> Unit) -> Unit,
+    private var data: List<Note>,
+    private val handleClick: (note: Note, toggleSelected: () -> Unit) -> Unit,
     private val handleLongClick: () -> Unit
 ) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+    private val _selected: MutableList<Int> = mutableListOf()
+    val selected get() = _selected.toList()
     class ViewHolder(val binding: NotesBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,27 +30,40 @@ class NotesAdapter(
         binding.content.text = note.content
         binding.clNote.clipToOutline = true
         binding.clNote.setOnClickListener {
-            handleClick(note) { notifyItemChanged(position) }
+            handleClick(note) { toggleSelected(note.id)}
         }
         binding.clNote.setOnLongClickListener {
             handleLongClick()
-            handleClick(note) { notifyItemChanged(position) }
+            handleClick(note) { toggleSelected(note.id)}
             true
         }
         Log.i("TEST", data.toString())
-        if (note.selected) {
+        if (_selected.contains(note.id)) {
             binding.clNote.background = holder.itemView.resources.getDrawable(R.drawable.selected_rounded_note, holder.itemView.context.theme)
         } else {
             binding.clNote.background = holder.itemView.resources.getDrawable(R.drawable.rounded_note, holder.itemView.context.theme)
-
         }
 
     }
 
     override fun getItemCount(): Int = data.size
-    fun updateList(newData: List<NoteModel>) {
+    fun updateList(newData: List<Note>) {
         Log.i("TEST", newData.toString())
         data = newData;
         notifyDataSetChanged()
     }
+
+    fun resetSelected()  {
+        notifyDataSetChanged()
+        _selected.clear()
+    }
+    private fun toggleSelected(id: Int) {
+        if(_selected.contains(id)) {
+            _selected.remove(id)
+        }else {
+            _selected.add(id)
+        }
+        notifyDataSetChanged()
+    }
+
 }
